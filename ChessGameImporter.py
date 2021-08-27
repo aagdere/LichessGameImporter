@@ -89,4 +89,14 @@ def main():
 		else: 
 			sleep(5)
 
-main()
+secondsUntilRestart = 30
+while True:
+	try:
+		main()
+	except OSError as osError:
+		print(f"OSError: {osError}")
+	except Exception as error:
+		print(f"Exception: {error}")
+	print(f"App failed, waiting {secondsUntilRestart} seconds till restart...")
+	sleep(secondsUntilRestart)
+	print("Restarting now...")
